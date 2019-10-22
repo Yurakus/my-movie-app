@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Route } from "react-router-dom";
+import Header from './components/Header';
+import MovieSearch from './components/MovieSearch';
+import MovieDetail from './components/MovieDetail';
+import FavouriteMovies from './components/FavouriteMovies';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter basename='/'>
+      <div>
+        <Header></Header>
+        <Route exact path="/" component={MovieSearch} />
+        <Route path='/movie-search' component={MovieSearch}/>
+        <Route path='/movie-detail' component={MovieDetail}/>
+        <Route path='/my-favourite-movies' component={FavouriteMovies}/>
+      </div>
+    </HashRouter>
   );
 }
 
